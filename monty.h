@@ -1,5 +1,9 @@
 #ifndef __MONTY__H
 #define __MONTY__H
+#include<stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -27,6 +31,10 @@ typedef struct instruction_s
 {
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
-} i
+} i;
 
+void findmy_func(char *function, char *parameter, int line);
+void read_line(char *strline, int line);
+void read_f(FILE *filed);
+void open_file(char *myfile);
 #endif
