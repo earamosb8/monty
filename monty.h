@@ -41,6 +41,7 @@ void pop(stack_t **stack, unsigned int line);
 void pint(stack_t **stack, unsigned int line_number);
 void open_file(char *myfile);
 void freen(void);
+void nop(stack_t **stack, unsigned int line);
 void swap(stack_t **stack, unsigned int line);
 void pall(stack_t **stack, unsigned int line);
 void push(stack_t **node, unsigned int line);

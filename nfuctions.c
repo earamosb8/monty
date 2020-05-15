@@ -87,3 +87,13 @@ void add(stack_t **stack, unsigned int line)
 	free(ptr);
 	(*stack)->prev = NULL;
 }
+/**
+ * nop - doesn’t do anything.
+ * @stack: double pointer to linked list.
+ * @line: Line number
+ */
+void nop(stack_t **stack, unsigned int line)
+{
+	(void)stack;
+	(void)line;
+}
