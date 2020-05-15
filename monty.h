@@ -31,9 +31,12 @@ typedef struct instruction_s
 {
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
-} i;
-void findmy_func(char *function, char *parameter, int line);
+} instruction_t;
+stack_t *create_node(int n);
+void (*get_op_code(char *function, unsigned int line)) (stack_t **stack, unsigned int);
 void read_line(char *strline, int line);
 void read_f(FILE *filed);
 void open_file(char *myfile);
+void freen(void);
+void push(stack_t **node, unsigned int line);
 #endif
