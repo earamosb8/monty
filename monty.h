@@ -38,5 +38,6 @@ void read_line(char *strline, int line);
 void read_f(FILE *filed);
 void open_file(char *myfile);
 void freen(void);
+void pall(stack_t **stack, unsigned int line);
 void push(stack_t **node, unsigned int line);
 #endif

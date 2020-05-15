@@ -36,6 +36,20 @@ void push(stack_t **node, unsigned int line)
         head->next = temp;
         temp->prev = head;
 }
+
+void pall(stack_t **stack, unsigned int line)
+{
+	stack_t *temp;
+
+	temp = *stack;
+	(void)line;
+
+	while (temp)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
+	}
+}
 #include "monty.h"
 /**
  * freen - Function to free the list
@@ -43,7 +57,7 @@ void push(stack_t **node, unsigned int line)
  */
 void freen(void)
 {
-        stack_t *tmp;
+ /      stack_t *tmp;
         if (head == NULL)
         {
                 return;
@@ -52,7 +66,7 @@ void freen(void)
         {
                 tmp = head;
                 head = head->next;
-                free(tmp);
+/*free(tmp);*/
         }
 }
 #include <stdio.h>
