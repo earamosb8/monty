@@ -36,6 +36,7 @@ stack_t *creat_nod(int n);
 void (*get_op_code(char *function, unsigned int line)) (stack_t **stack, unsigned int);
 void read_line(char *strline, int line);
 void read_f(FILE *filed);
+void pop(stack_t **stack, unsigned int line);
 void pint(stack_t **stack, unsigned int line_number);
 void open_file(char *myfile);
 void freen(void);
