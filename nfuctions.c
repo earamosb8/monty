@@ -23,8 +23,10 @@ void pop(stack_t **stack, unsigned int line)
 	stack_t *ptr;
 
 	if (*stack == NULL)
+	{
 		dprintf(STDERR_FILENO, "L%ui: can't pop an empty stack\n", line);
-                exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
+	}
 	if ((*stack)->next == NULL)
 	{
 		free(*stack);
@@ -51,7 +53,7 @@ void swap(stack_t **stack, unsigned int line)
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%ui: can't swap, stack too short\n", line);
-                exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	ptr = (*stack)->next;
 	(*stack)->prev = ptr;
@@ -59,4 +61,29 @@ void swap(stack_t **stack, unsigned int line)
 	ptr->prev = NULL;
 	ptr->next = *stack;
 	*stack = ptr;
+}
+/**
+ * op_add - adds the top two elements of the stack.
+ * @stack: double pointer to linked list = stack
+ * @line: Line number of the instruction
+ */
+void add(stack_t **stack, unsigned int line)
+{
+	stack_t *ptr;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%ui: can't add, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
+	ptr = *stack;
+	if (ptr->next == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%ui: can't add, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
+	ptr->next->n += (*stack)->n;
+	*stack = (*stack)->next;
+	free(ptr);
+	(*stack)->prev = NULL;
 }
