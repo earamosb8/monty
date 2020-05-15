@@ -39,3 +39,24 @@ void pop(stack_t **stack, unsigned int line)
 		free(ptr);
 	}
 }
+/**
+ * swap - swaps the top two elements.
+ * @stack: double pointer to linked list
+ * @line: Line number
+ */
+void swap(stack_t **stack, unsigned int line)
+{
+	stack_t *ptr;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%ui: can't swap, stack too short\n", line);
+                exit(EXIT_FAILURE);
+	}
+	ptr = (*stack)->next;
+	(*stack)->prev = ptr;
+	(*stack)->next = ptr->next;
+	ptr->prev = NULL;
+	ptr->next = *stack;
+	*stack = ptr;
+}
