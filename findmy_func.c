@@ -13,7 +13,7 @@ void (*get_op_code(char *function, unsigned int line))(stack_t **stack, unsigned
 {
 	int i;
 	stack_t *node;
-	instruction_t list[] = {{"push", push}, {"pall", pall}, {NULL, NULL}};
+	instruction_t list[] = {{"push", push}, {"pall", pall}, {"pint", pint}, {NULL, NULL}};
 	char *value = NULL, *action = NULL;
 
 	action = strtok(function, "\n ");
