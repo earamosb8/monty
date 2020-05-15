@@ -7,7 +7,5 @@
  */
 void read_line(char *strline, int line)
 {
-	char *action = NULL;
-        action = strtok(strline, "\n ");
-	get_op_code(action,line);
+	get_op_code(strline,line);
 }

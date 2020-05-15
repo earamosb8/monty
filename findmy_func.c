@@ -12,13 +12,20 @@
 void (*get_op_code(char *function, unsigned int line)) (stack_t **stack, unsigned int)
 {
 	int i;
+	stack_t *node;
 	instruction_t list[] = {
-        {"push", push}, {NULL, NULL}};
+        {"push", push}, {"pall", pall}, {NULL, NULL}};
+	char *value = NULL;
+	char *action = NULL;
+        action = strtok(function, "\n ");
+	value = strtok(NULL, "\n ");
 
 	for (i = 0; list[i].opcode != NULL; i++)
 	{
-		if (strcmp(function, list[i].opcode) == 0)
+		if (strcmp(action, list[i].opcode) == 0)
 		{
+			node = creat_nod(atoi(value));
+			node = node, list[i].f(&node, line);
 			return (list[i].f);
 		}
 	}

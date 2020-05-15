@@ -57,7 +57,7 @@ void pall(stack_t **stack, unsigned int line)
  */
 void freen(void)
 {
- /      stack_t *tmp;
+	stack_t *tmp;
         if (head == NULL)
         {
                 return;
@@ -66,7 +66,7 @@ void freen(void)
         {
                 tmp = head;
                 head = head->next;
-/*free(tmp);*/
+		free(tmp);
         }
 }
 #include <stdio.h>
