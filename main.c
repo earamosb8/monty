@@ -40,6 +40,12 @@ void push(stack_t **node, unsigned int line)
 	head->next = temp;
 	temp->prev = head;
 }
+/**
+ * pall - prints all the values on the stack,
+ * starting from the top .
+ * @stack: double pointer to linked list
+ * @line: Line number
+ */
 void pall(stack_t **stack, unsigned int line)
 {
 	stack_t *temp;
