@@ -7,5 +7,5 @@
  */
 void read_line(char *strline, int line)
 {
-	get_op_code(strline,line);
+	get_op_code(strline, line);
 }

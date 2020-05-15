@@ -1,49 +1,51 @@
 #include "monty.h"
 #include <stdio.h>
+stack_t *head = NULL;
 /**
  * main - Entry Point
  * @argc: Number of command line arguments.
  * @argv: An array containing the arguments.
  * Return: Always Zero.
  */
-stack_t *head = NULL;
 int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
 	open_file(argv[1]);
 	freen();
 	return (0);
 }
-
+/**
+ * push - pushes an element to the stack.
+ * @node: node
+ * @line: Line number of the instruction
+ */
 void push(stack_t **node, unsigned int line)
 {
-        stack_t *temp;
+	stack_t *temp;
+	(void)line;
 
-        (void)line;
-        if (node == NULL || *node == NULL)
-                exit(EXIT_FAILURE);
-        if (head == NULL)
-        {
-                head = *node;
-                return;
-        }
-        temp = head;
-        head = *node;
-        head->next = temp;
-        temp->prev = head;
+	if (node == NULL || *node == NULL)
+		exit(EXIT_FAILURE);
+	if (head == NULL)
+	{
+		head = *node;
+		return;
+	}
+	temp = head;
+	head = *node;
+	head->next = temp;
+	temp->prev = head;
 }
-
 void pall(stack_t **stack, unsigned int line)
 {
 	stack_t *temp;
 
 	temp = *stack;
 	(void)line;
-
 	while (temp)
 	{
 		printf("%d\n", temp->n);
@@ -58,18 +60,22 @@ void pall(stack_t **stack, unsigned int line)
 void freen(void)
 {
 	stack_t *tmp;
-        if (head == NULL)
-        {
-                return;
-        }
-        while (head != NULL)
-        {
-                tmp = head;
-                head = head->next;
+
+	if (head == NULL)
+		return;
+	while (head != NULL)
+	{
+		tmp = head;
+		head = head->next;
 		free(tmp);
-        }
+	}
 }
 #include <stdio.h>
+/**
+ * creat_nod - Creates a node.
+ * @n: Value to the node
+ * Return: On sucess -> pointer to the node. On failure  NULL.
+ */
 stack_t *creat_nod(int n)
 {
 	stack_t *new_node;
@@ -84,7 +90,6 @@ stack_t *creat_nod(int n)
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	new_node->n = n;
-
 	return (new_node);
 }
 
